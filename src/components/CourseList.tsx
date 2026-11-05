@@ -69,9 +69,7 @@ export function CourseList({ courses, onEdit, onDelete }: CourseListProps) {
       </ul>
       <div className="mt-3 flex items-baseline justify-between border-t border-line pt-3">
         <span className="text-sm text-ink-soft">Total credits</span>
-        <span className="font-display text-xl font-semibold" data-testid="total-credits">
-          {totalCredits(courses)}
-        </span>
+        <span className="font-display text-xl font-semibold">{totalCredits(courses)}</span>
       </div>
     </div>
   );
