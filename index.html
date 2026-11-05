@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Build and compare FFCS timetable plans." />
-    <meta name="theme-color" content="#be185d" />
+    <meta name="theme-color" content="#fdf6f6" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>unnati's ffcs</title>
     <script>
@@ -17,6 +17,7 @@
           dark = false;
         }
         document.documentElement.classList.toggle('dark', dark);
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#1a1016' : '#fdf6f6';
       })();
     </script>
   </head>

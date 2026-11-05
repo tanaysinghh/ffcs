@@ -5,8 +5,8 @@ import { Button } from './Button';
 const STORAGE_KEY = 'ffcs-planner:theme';
 
 function syncThemeColor(): void {
-  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', accent);
+  const canvas = getComputedStyle(document.documentElement).getPropertyValue('--canvas').trim();
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', canvas);
 }
 
 function applyTheme(dark: boolean): void {

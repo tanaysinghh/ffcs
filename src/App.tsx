@@ -122,7 +122,7 @@ export default function App() {
 
       <div className="mx-auto max-w-[1440px] px-4 pt-4 pb-16 sm:px-6 lg:pt-6">
         <header className="mb-5 flex items-center justify-between gap-3 lg:mb-7">
-          <h1 className="font-display text-sm font-medium whitespace-nowrap text-ink-soft">unnati's ffcs</h1>
+          <h1 className="font-display text-lg font-semibold whitespace-nowrap text-ink sm:text-xl">unnati's ffcs</h1>
           <div className="flex items-center gap-1 sm:gap-2">
             <div role="group" aria-label="View" className="flex rounded-xl bg-sunken p-1">
               {(
