@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Build and compare FFCS timetable plans." />
+    <meta name="theme-color" content="#f6f8f7" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>FFCS Planner</title>
+    <script>
+      (function () {
+        var dark;
+        try {
+          var stored = localStorage.getItem('ffcs-planner:theme');
+          dark = stored ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        } catch (error) {
+          dark = false;
+        }
+        document.documentElement.classList.toggle('dark', dark);
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#0f1513' : '#f6f8f7';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

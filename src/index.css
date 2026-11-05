@@ -1,0 +1,297 @@
+@import '@fontsource-variable/figtree';
+@import '@fontsource-variable/lora';
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Lora Variable', Georgia, serif;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --shadow-card: var(--card-shadow);
+  --shadow-lift: var(--lift-shadow);
+
+  --animate-cell-fill: cell-fill 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-fade-up: fade-up 200ms ease-out both;
+  --animate-modal-in: modal-in 180ms ease-out both;
+
+  @keyframes cell-fill {
+    from {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+:root,
+.theme-light {
+  color-scheme: light;
+  --canvas: #f6f8f7;
+  --surface: #ffffff;
+  --sunken: #f1f4f3;
+  --line: #e2e8e6;
+  --ink: #15302c;
+  --ink-soft: #4f6561;
+  --ink-faint: #576b67;
+  --accent: #0f766e;
+  --accent-hover: #0c625b;
+  --on-accent: #ffffff;
+  --accent-soft: #e0f3f0;
+  --accent-ink: #0b5c55;
+  --danger: #b91c1c;
+  --danger-soft: #fdecec;
+  --lunch-bg: #eceff0;
+  --lunch-stripe: #e1e5e6;
+  --card-shadow: 0 1px 2px rgb(21 48 44 / 0.04), 0 8px 24px -16px rgb(21 48 44 / 0.12);
+  --lift-shadow: 0 12px 40px -12px rgb(21 48 44 / 0.28);
+
+  --tint-0-bg: #dcebfa;
+  --tint-0-fg: #123f6d;
+  --tint-0-dot: #5b9bd8;
+  --tint-1-bg: #fbe6d8;
+  --tint-1-fg: #6e3410;
+  --tint-1-dot: #e39a68;
+  --tint-2-bg: #e8e3f9;
+  --tint-2-fg: #3f2e80;
+  --tint-2-dot: #9280db;
+  --tint-3-bg: #d9f1e3;
+  --tint-3-fg: #14532d;
+  --tint-3-dot: #55b584;
+  --tint-4-bg: #fbe1e8;
+  --tint-4-fg: #7a1f3d;
+  --tint-4-dot: #e07c9c;
+  --tint-5-bg: #f8efc8;
+  --tint-5-fg: #5c4708;
+  --tint-5-dot: #cdae3f;
+  --tint-6-bg: #d6f0f3;
+  --tint-6-fg: #0f4c55;
+  --tint-6-dot: #4db3c2;
+  --tint-7-bg: #f5e0f5;
+  --tint-7-fg: #6b1f6b;
+  --tint-7-dot: #c674c6;
+  --tint-8-bg: #e8eed3;
+  --tint-8-fg: #44500f;
+  --tint-8-dot: #9aab4a;
+  --tint-9-bg: #ede6df;
+  --tint-9-fg: #4e3d2e;
+  --tint-9-dot: #a88e76;
+}
+
+.dark {
+  color-scheme: dark;
+  --canvas: #0f1513;
+  --surface: #161e1c;
+  --sunken: #1c2623;
+  --line: #2a3632;
+  --ink: #e6eeec;
+  --ink-soft: #a3b4af;
+  --ink-faint: #8a9c97;
+  --accent: #5eead4;
+  --accent-hover: #99f6e4;
+  --on-accent: #042f2e;
+  --accent-soft: #17332f;
+  --accent-ink: #8ef0de;
+  --danger: #fca5a5;
+  --danger-soft: #3a1d1d;
+  --lunch-bg: #131a18;
+  --lunch-stripe: #1a2320;
+  --card-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -16px rgb(0 0 0 / 0.5);
+  --lift-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.7);
+
+  --tint-0-bg: #1c3347;
+  --tint-0-fg: #bbdcfb;
+  --tint-0-dot: #7ab5ec;
+  --tint-1-bg: #40291c;
+  --tint-1-fg: #f8cfb3;
+  --tint-1-dot: #eda877;
+  --tint-2-bg: #2e2848;
+  --tint-2-fg: #d6ccfb;
+  --tint-2-dot: #a595ec;
+  --tint-3-bg: #1b3627;
+  --tint-3-fg: #b4ebcb;
+  --tint-3-dot: #66c795;
+  --tint-4-bg: #42222d;
+  --tint-4-fg: #f9c6d6;
+  --tint-4-dot: #ec8cab;
+  --tint-5-bg: #38301a;
+  --tint-5-fg: #f0df9c;
+  --tint-5-dot: #dcbd4e;
+  --tint-6-bg: #17353a;
+  --tint-6-fg: #aee6ee;
+  --tint-6-dot: #5cc4d3;
+  --tint-7-bg: #3a2339;
+  --tint-7-fg: #f0c6ef;
+  --tint-7-dot: #d686d6;
+  --tint-8-bg: #2e331a;
+  --tint-8-fg: #d9e4a6;
+  --tint-8-dot: #aebf5d;
+  --tint-9-bg: #332c25;
+  --tint-9-fg: #e3d5c6;
+  --tint-9-dot: #bba189;
+}
+
+[data-tint='0'] {
+  --tint-bg: var(--tint-0-bg);
+  --tint-fg: var(--tint-0-fg);
+  --tint-dot: var(--tint-0-dot);
+}
+[data-tint='1'] {
+  --tint-bg: var(--tint-1-bg);
+  --tint-fg: var(--tint-1-fg);
+  --tint-dot: var(--tint-1-dot);
+}
+[data-tint='2'] {
+  --tint-bg: var(--tint-2-bg);
+  --tint-fg: var(--tint-2-fg);
+  --tint-dot: var(--tint-2-dot);
+}
+[data-tint='3'] {
+  --tint-bg: var(--tint-3-bg);
+  --tint-fg: var(--tint-3-fg);
+  --tint-dot: var(--tint-3-dot);
+}
+[data-tint='4'] {
+  --tint-bg: var(--tint-4-bg);
+  --tint-fg: var(--tint-4-fg);
+  --tint-dot: var(--tint-4-dot);
+}
+[data-tint='5'] {
+  --tint-bg: var(--tint-5-bg);
+  --tint-fg: var(--tint-5-fg);
+  --tint-dot: var(--tint-5-dot);
+}
+[data-tint='6'] {
+  --tint-bg: var(--tint-6-bg);
+  --tint-fg: var(--tint-6-fg);
+  --tint-dot: var(--tint-6-dot);
+}
+[data-tint='7'] {
+  --tint-bg: var(--tint-7-bg);
+  --tint-fg: var(--tint-7-fg);
+  --tint-dot: var(--tint-7-dot);
+}
+[data-tint='8'] {
+  --tint-bg: var(--tint-8-bg);
+  --tint-fg: var(--tint-8-fg);
+  --tint-dot: var(--tint-8-dot);
+}
+[data-tint='9'] {
+  --tint-bg: var(--tint-9-bg);
+  --tint-fg: var(--tint-9-fg);
+  --tint-dot: var(--tint-9-dot);
+}
+
+.tint-fill {
+  background-color: var(--tint-bg);
+  color: var(--tint-fg);
+}
+
+.tint-dot {
+  background-color: var(--tint-dot);
+}
+
+.lunch-fill {
+  background-color: var(--lunch-bg);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--lunch-stripe) 0,
+    var(--lunch-stripe) 2px,
+    transparent 2px,
+    transparent 7px
+  );
+}
+
+.font-display {
+  font-variant-numeric: normal;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-motion,
+.no-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+
+dialog::backdrop {
+  background: rgb(8 16 14 / 0.5);
+}
+
+@layer base {
+  html {
+    background-color: var(--canvas);
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
