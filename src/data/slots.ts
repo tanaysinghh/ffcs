@@ -58,7 +58,3 @@ export const SLOTS = Object.fromEntries(
 export function isSlotCode(value: string): value is SlotCode {
   return Object.hasOwn(SLOTS, value);
 }
-
-export function getToday(date: Date = new Date()): Day | null {
-  return DAYS[date.getDay() - 1] ?? null;
-}

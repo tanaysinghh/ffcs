@@ -11,8 +11,11 @@ export const ExportSheet = forwardRef<HTMLDivElement, ExportSheetProps>(function
   return (
     <div aria-hidden="true" className="pointer-events-none fixed top-0 left-[-10000px]">
       <div ref={ref} className="theme-light no-motion w-[1120px] bg-surface p-8 font-sans text-ink">
-        <div className="mb-5 flex items-baseline justify-between">
-          <h2 className="font-display text-2xl font-semibold">{plan.name}</h2>
+        <div className="mb-5 flex items-end justify-between">
+          <div>
+            <p className="font-display text-xs font-medium text-accent-ink">unnati's ffcs</p>
+            <h2 className="font-display text-2xl font-semibold">{plan.name}</h2>
+          </div>
           <p className="text-sm text-ink-soft">
             {plan.courses.length} {plan.courses.length === 1 ? 'course' : 'courses'} · {credits}{' '}
             {credits === 1 ? 'credit' : 'credits'}

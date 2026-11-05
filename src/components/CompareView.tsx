@@ -44,7 +44,7 @@ function PlanColumn({ plan, chosen, stats, best }: PlanColumnProps) {
 
       <dl className="mt-4 divide-y divide-line text-sm">
         {STAT_DEFINITIONS.map(({ key, label }) => {
-          const isBest = best[key] === stats[key];
+          const isBest = plan.courses.length > 0 && best[key] === stats[key];
           return (
             <div key={key} className="flex items-center justify-between gap-3 py-1.5">
               <dt className="text-ink-soft">{label}</dt>

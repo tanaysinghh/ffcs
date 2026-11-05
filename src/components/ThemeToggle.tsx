@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react';
 import { Button } from './Button';
 
 const STORAGE_KEY = 'ffcs-planner:theme';
-const THEME_COLORS = { dark: '#0f1513', light: '#f6f8f7' };
+
+function syncThemeColor(): void {
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', accent);
+}
 
 function applyTheme(dark: boolean): void {
   document.documentElement.classList.toggle('dark', dark);
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? THEME_COLORS.dark : THEME_COLORS.light);
+  syncThemeColor();
 }
 
 function readStoredTheme(): string | null {
@@ -22,6 +26,7 @@ export function ThemeToggle() {
   const [dark, setDark] = useState(() => document.documentElement.classList.contains('dark'));
 
   useEffect(() => {
+    syncThemeColor();
     const media = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (event: MediaQueryListEvent) => {
       if (readStoredTheme()) return;

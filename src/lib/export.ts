@@ -17,7 +17,7 @@ function downloadDataUrl(dataUrl: string, fileName: string): void {
 export async function exportNode(node: HTMLElement, planName: string, format: ExportFormat): Promise<void> {
   await document.fonts.ready;
   const { toPng } = await import('html-to-image');
-  const dataUrl = await toPng(node, { pixelRatio: 2, backgroundColor: '#ffffff' });
+  const dataUrl = await toPng(node, { pixelRatio: 2, backgroundColor: getComputedStyle(node).backgroundColor });
   const fileName = exportFileName(planName, format);
 
   if (format === 'png') {

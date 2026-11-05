@@ -7,7 +7,6 @@ interface CellProps {
   code: SlotCode;
   course?: Course;
   variant: GridVariant;
-  isToday: boolean;
   onSelect?: (course: Course) => void;
 }
 
@@ -30,16 +29,16 @@ function describeCell(code: SlotCode, course?: Course): string {
   return `${parts.join(', ')}, ${when}`;
 }
 
-export function Cell({ code, course, variant, isToday, onSelect }: CellProps) {
+export function Cell({ code, course, variant, onSelect }: CellProps) {
   const compact = variant === 'compact';
 
   if (!course) {
     return (
       <div
         aria-label={describeCell(code)}
-        className={`flex h-full items-center justify-center rounded-lg text-ink-faint ${
+        className={`flex h-full items-center justify-center rounded-lg bg-sunken text-ink-faint ${
           compact ? 'text-[10px]' : 'text-xs'
-        } ${isToday ? 'bg-accent-soft' : 'bg-sunken'}`}
+        }`}
       >
         {code}
       </div>

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { COLUMNS, DAYS, DAY_NAMES, GRID_LAYOUT, type Day, type SlotCode } from '../data/slots';
+import { COLUMNS, DAYS, DAY_NAMES, GRID_LAYOUT, type SlotCode } from '../data/slots';
 import type { Course } from '../lib/types';
 import { Cell, type GridVariant } from './Cell';
 
@@ -7,7 +7,6 @@ interface GridProps {
   label: string;
   courses: readonly Course[];
   variant?: GridVariant;
-  today?: Day | null;
   onSelect?: (course: Course) => void;
 }
 
@@ -26,7 +25,7 @@ const VARIANT_LAYOUT: Record<GridVariant, { columns: string; minWidth: number; m
   },
 };
 
-export function Grid({ label, courses, variant = 'full', today = null, onSelect }: GridProps) {
+export function Grid({ label, courses, variant = 'full', onSelect }: GridProps) {
   const compact = variant === 'compact';
   const layout = VARIANT_LAYOUT[variant];
 
@@ -81,23 +80,18 @@ export function Grid({ label, courses, variant = 'full', today = null, onSelect 
       </div>
 
       {DAYS.map((day, dayIndex) => {
-        const isToday = day === today;
         const gridRow = dayIndex + 2;
         return (
           <div key={day} role="row" className="contents">
             <div
               role="rowheader"
-              aria-label={`${DAY_NAMES[day]}${isToday ? ', today' : ''}`}
-              className={`sticky left-0 z-10 bg-surface ${layout.stickyEdge}`}
+              aria-label={DAY_NAMES[day]}
+              className={`sticky left-0 z-10 flex items-center justify-center bg-surface font-semibold tracking-wide text-ink-soft ${
+                compact ? 'text-[10px]' : 'text-xs'
+              } ${layout.stickyEdge}`}
               style={{ gridColumn: 1, gridRow }}
             >
-              <div
-                className={`flex h-full items-center justify-center rounded-lg font-semibold tracking-wide ${
-                  compact ? 'text-[10px]' : 'text-xs'
-                } ${isToday ? 'bg-accent-soft text-accent-ink' : 'text-ink-soft'}`}
-              >
-                {day}
-              </div>
+              {day}
             </div>
             {GRID_LAYOUT[day].map((code, columnIndex) => {
               const gridColumn = columnIndex + 2;
@@ -128,7 +122,6 @@ export function Grid({ label, courses, variant = 'full', today = null, onSelect 
                     code={code}
                     course={course}
                     variant={variant}
-                    isToday={isToday}
                     onSelect={onSelect}
                   />
                 </div>

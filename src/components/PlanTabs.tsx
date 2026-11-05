@@ -106,14 +106,19 @@ export function PlanTabs({ plans, activeId, chosenId, onDelete }: PlanTabsProps)
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActivePlan(plan.id)}
                 onDoubleClick={startRename}
-                className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg px-3 text-sm whitespace-nowrap transition duration-200 ease-out focus-visible:outline-offset-[-2px] sm:h-8 ${
-                  selected ? 'bg-surface font-semibold text-ink shadow-card' : 'font-medium text-ink-soft hover:text-ink'
+                className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-lg px-3 text-sm whitespace-nowrap transition duration-200 ease-out sm:h-8 ${
+                  selected ? 'bg-accent font-semibold text-on-accent shadow-card' : 'font-medium text-ink-soft hover:text-ink'
                 }`}
               >
                 {plan.name}
                 {chosenId === plan.id ? (
                   <>
-                    <StarIcon size={13} weight="fill" aria-hidden="true" className="text-accent" />
+                    <StarIcon
+                      size={13}
+                      weight="fill"
+                      aria-hidden="true"
+                      className={selected ? 'text-on-accent' : 'text-accent'}
+                    />
                     <span className="sr-only">(chosen)</span>
                   </>
                 ) : null}

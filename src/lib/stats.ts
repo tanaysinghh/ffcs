@@ -12,9 +12,9 @@ export interface PlanStats {
 
 export type StatKey = keyof PlanStats;
 
-export const STAT_DEFINITIONS: readonly { key: StatKey; label: string; best: 'high' | 'low' }[] = [
-  { key: 'credits', label: 'Total credits', best: 'high' },
-  { key: 'courses', label: 'Courses', best: 'high' },
+export const STAT_DEFINITIONS: readonly { key: StatKey; label: string; best?: 'high' | 'low' }[] = [
+  { key: 'credits', label: 'Total credits' },
+  { key: 'courses', label: 'Courses' },
   { key: 'earlyClasses', label: '08:30 classes', best: 'low' },
   { key: 'lateClasses', label: 'Classes from 16:25', best: 'low' },
   { key: 'freeDays', label: 'Days with no class', best: 'high' },
@@ -40,6 +40,7 @@ export function findBestValues(stats: readonly PlanStats[]): Partial<Record<Stat
 
   const best: Partial<Record<StatKey, number>> = {};
   for (const { key, best: direction } of STAT_DEFINITIONS) {
+    if (!direction) continue;
     const values = candidates.map((entry) => entry[key]);
     const top = direction === 'high' ? Math.max(...values) : Math.min(...values);
     if (values.some((value) => value !== top)) best[key] = top;

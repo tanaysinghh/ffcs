@@ -10,7 +10,6 @@ import { Grid } from './components/Grid';
 import { ConfirmDialog, Modal, type ConfirmRequest } from './components/Modal';
 import { PlanTabs } from './components/PlanTabs';
 import { ThemeToggle } from './components/ThemeToggle';
-import { getToday } from './data/slots';
 import { exportFileName, exportNode, type ExportFormat } from './lib/export';
 import { courseLabel, type Course, type CourseDraft, type Plan } from './lib/types';
 import {
@@ -37,7 +36,6 @@ export default function App() {
   const [exportingPlan, setExportingPlan] = useState<Plan | null>(null);
   const [exportFormat, setExportFormat] = useState<ExportFormat | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
-  const today = getToday();
   const editing = active.courses.find((course) => course.id === editingId);
 
   useEffect(() => {
@@ -124,9 +122,7 @@ export default function App() {
 
       <div className="mx-auto max-w-[1440px] px-4 pt-4 pb-16 sm:px-6 lg:pt-6">
         <header className="mb-5 flex items-center justify-between gap-3 lg:mb-7">
-          <h1 className="font-display text-xl font-semibold tracking-tight whitespace-nowrap sm:text-2xl">
-            FFCS Planner
-          </h1>
+          <h1 className="font-display text-sm font-medium whitespace-nowrap text-ink-soft">unnati's ffcs</h1>
           <div className="flex items-center gap-1 sm:gap-2">
             <div role="group" aria-label="View" className="flex rounded-xl bg-sunken p-1">
               {(
@@ -142,7 +138,7 @@ export default function App() {
                   onClick={() => setMode(value)}
                   className={`inline-flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-sm transition duration-200 ease-out sm:px-3 lg:h-8 ${
                     mode === value
-                      ? 'bg-surface font-semibold text-ink shadow-card'
+                      ? 'bg-surface font-semibold text-accent-ink shadow-card'
                       : 'font-medium text-ink-soft hover:text-ink'
                   }`}
                 >
@@ -214,7 +210,6 @@ export default function App() {
                   <Grid
                     label={`${active.name} timetable`}
                     courses={active.courses}
-                    today={today}
                     onSelect={(course) => setEditingId(course.id)}
                   />
                 </div>
